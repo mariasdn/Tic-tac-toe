@@ -21,4 +21,11 @@ class Board:
         if self.moves >= 9:
             return True
         return False
-        
+
+
+if __name__ == '__main__':
+    print('Hi')
+    b = Board()
+    print(b)
+    move = int(input('What is your move?  '))
+    b.changeTile(move)
