@@ -21,10 +21,17 @@ class Board:
         return stringRepr.format(spaces[0], spaces[1], spaces[2], spaces[3], spaces[4], spaces[5], spaces[6], spaces[7], spaces[8])
 
     def changeTile(self, tile):
+        """
+        Changes the tile given as a parameter.
+        Raise exception if the tile that is passed in already has been played on
+        Raise expection if the tile is not between 0-8 inclusive
+        """
         if self.moves % 2 == 1:
             self.turn = 'O'
         else:
             self.turn = 'X'
+        if self.data[tile] is 'N':
+            raise Exception("Changing tile would cause overwrite of past turn")
         self.data[tile] = self.turn
         self.moves += 1
 
