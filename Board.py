@@ -18,7 +18,9 @@ class Board:
             else:
                 spaces.append(str(i))
 
-        return stringRepr.format(spaces[0], spaces[1], spaces[2], spaces[3], spaces[4], spaces[5], spaces[6], spaces[7], spaces[8])
+        return stringRepr.format(spaces[0], spaces[1], spaces[2], spaces[3],
+                                 spaces[4], spaces[5], spaces[6], spaces[7],
+                                 spaces[8])
 
     def changeTile(self, tile):
         """
@@ -26,6 +28,8 @@ class Board:
         Raise exception if the tile that is passed in already has been played on
         Raise expection if the tile is not between 0-8 inclusive
         """
+        if not tile in range(9):
+            raise Exception("Tile passed in is not between 0-8 inclusive")
         if self.moves % 2 == 1:
             self.turn = 'O'
         else:
