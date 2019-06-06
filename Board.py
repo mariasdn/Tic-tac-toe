@@ -28,7 +28,7 @@ class Board:
         Raise exception if the tile that is passed in already has been played on
         Raise expection if the tile is not between 0-8 inclusive
         """
-        if not tile in range(9):
+        if not (0 <= tile <= 8):
             raise Exception("Tile passed in is not between 0-8 inclusive")
         if self.moves % 2 == 1:
             self.turn = 'O'
@@ -40,7 +40,12 @@ class Board:
         self.moves += 1
 
     def isOver(self):
-        # Check if
+        """
+        isOver checks if the game is over.
+        the game can be over in 2 situations:
+            first one of the players has made 3 in a row
+            second all the tiles are filed and the playres cannot go anywhere
+        """
         combo = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6],
                  [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
         for x in combo:
