@@ -1,8 +1,17 @@
+import json
+
+
 class Board:
-    def __init__(self):
-        self.data = ['N' for _ in range(9)]
-        self.moves = 0
-        self.turn = 'X'
+    def __init__(self, str=''):
+        if str is '':
+            self.data = ['N' for _ in range(9)]
+            self.moves = 0
+            self.turn = 'X'
+        else:
+            d = json.loads(str)
+            self.data = d['data']
+            self.moves = d['moves']
+            self.turn = d['turn']
 
     def __str__(self):
         stringRepr = ' {} | {} | {} \n' \
@@ -21,6 +30,9 @@ class Board:
         return stringRepr.format(spaces[0], spaces[1], spaces[2], spaces[3],
                                  spaces[4], spaces[5], spaces[6], spaces[7],
                                  spaces[8])
+
+    def toJSON(self):
+        return json.dumps(self.__dict__)
 
     def changeTile(self, tile):
         """
