@@ -12,10 +12,8 @@ if __name__ == '__main__':
     # play game
     # 3. Play game
 
-    b = Board()
-    print(b)
-    while not b.isOver():
-        move = int(input('What is your move?  '))
-        b.changeTile(move)
-        print(b)
-    print('GAME OVER! {} IS A WINNER!'.format(b.turn))
+    option1 = input(
+        "Would you like to challenge someone (1) be challenged by someone (2) or play alone/local (3): ")
+    if option1 is 1:
+        ipaddr = input(
+            "Please provide the ip address for the person you want to challenge: ")
