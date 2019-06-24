@@ -34,7 +34,7 @@ class Board:
             self.turn = 'O'
         else:
             self.turn = 'X'
-        if self.data[tile] is 'N':
+        if self.data[tile] is not 'N':
             raise Exception("Changing tile would cause overwrite of past turn")
         self.data[tile] = self.turn
         self.moves += 1
