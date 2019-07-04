@@ -1,8 +1,8 @@
 from Board import Board
-from server import SimpleHTTPServer
+from Server import TicTacToeHTTPServer
 
 import requests
-from http.server import HTTPServer
+import socketserver
 
 
 def playGame(b):
@@ -44,14 +44,13 @@ if __name__ == '__main__':
                 b.changeTile(move)
                 # send request
                 response = requests.post(
-                    ipaddr, data=b.toJSON(), timeout=10)
+                    "http://" + ipaddr + ":5500", data=b.toJSON(), timeout=10)
                 b = Board(str=response.text)
 
             break
         if option == 'C':
-            # show ip addr
-            # start a server on port 80
-            httpd = HTTPServer(('', 80), SimpleHTTPServer)
+            # TODO: we are going to ignore this part! For now!
+            httpd = socketserver.TCPServer(("", 5500), TicTacToeHTTPServer)
             httpd.serve_forever()
             break
         else:
