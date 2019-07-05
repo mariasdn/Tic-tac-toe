@@ -2,6 +2,11 @@
 
 Tic tac toe allows users to play against each other in tic tac toe over the internet.
 
+# TODO:
+
+- [ ] Handle all exceptions
+- [ ] Make sure the game over state it checked on both ends
+
 ## Design:
 
 The user should start up and be prompted to enter an IP ADDR to connect and face off.
