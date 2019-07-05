@@ -41,7 +41,11 @@ if __name__ == '__main__':
             while not b.isOver():
                 print(b)
                 move = int(input('What is your move?  '))
-                b.changeTile(move)
+                try:
+                    b.changeTile(move)
+                except Exception as e:
+                    print(e)
+                    continue
                 # send request
                 response = requests.post(
                     "http://" + ipaddr + ":5500", data=b.toJSON(), timeout=10)
